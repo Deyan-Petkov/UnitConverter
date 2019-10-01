@@ -1,0 +1,225 @@
+/*Wraps around every html formattedOutput and render it intuitively */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 3rem 0;
+    font-family: 'Comic Sans MS', 'DejaVu Sans', Arial, Helvetica;
+    background-color: black;
+    color: rgb(78, 206, 48);
+}
+
+/*splits the view on 12 columns and
+centers the page */
+main {
+    margin: 0 auto;
+    max-width: 60rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: min-content;
+    grid-gap: 1rem;
+}
+
+
+img {
+    /*adjust imagese to the size of the window
+    format it and place it at specific position*/
+    width: 70%;
+    height: auto;
+    border-radius: 4rem;
+    /*padding: 1rem;*/
+    grid-row: 2;
+    grid-column: 6/-1;
+    flex-wrap: wrap;
+}
+
+
+/*formats the header section - center,4th column first row*/
+header {
+    grid-column: 4/-1;
+    text-align: center;
+    border: none;
+    grid-row: 1;
+}
+
+/*set the image positions in profile and register pages*/
+#profilePic, #infoPic {
+    grid-column: 1/3;
+    margin: 1rem;
+}
+
+/*positon the navigation block*/
+nav {
+    grid-column: 1 / 3;
+    grid-row: 3;
+
+}
+
+nav li {
+
+    margin: 0;
+    padding: 0;
+}
+
+/*sets the view style for the navigation and the distance between the blocks*/
+nav a {
+    display: block;
+    padding: 0.2rem;
+    margin-right: 0.1rem;
+    margin-bottom: 0.2rem;
+}
+
+/*position and format the article section*/
+article {
+    text-align: left;
+    grid-column: 4/-1;
+    grid-row: 3;
+}
+
+/*sets color ot the keywords in information.html*/
+strong {
+    color: rgb(156, 39, 39);
+}
+
+/*position the javascript calculation button*/
+.converter {
+    grid-row: 4;
+    grid-column: 4/-1;
+
+}
+
+/*format and position the button which adds current calculations
+to the temporary list*/
+.keepConv {
+    height: min-content;
+    width: min-content;
+    display: flex;
+    grid-column: 4/-1;
+    grid-row: 6;
+}
+
+/*position and control the span of the temporary saved calculations*/
+#displayConv {
+    grid-column: 6/-1;
+    grid-row: 6;
+    width: auto;
+}
+
+/*position the persisting save to database button*/
+.thGet {
+    grid-column: 4/-1;
+    grid-row: 5;
+    display: inline-flex;
+}
+
+/*sets the font and the look of buttons and menus*/
+input, select, output, button {
+
+    font-size: 1.1rem;
+    border-radius: 0.3rem;
+    height: border-box;
+    width: min-content;
+}
+
+/*set different collor to the hiperlinks*/
+a {
+    color: aquamarine;
+    text-decoration: none;
+}
+
+/*when pointing link with mouse - makes it bigger*/
+a:hover {
+    font-size: 1.1rem;
+}
+
+
+/*position the footer to the bottom center of the page*/
+footer {
+    grid-row: 8;
+    grid-column: 1/-1;
+    text-align: center;
+}
+
+
+/*controls the behaviour of the pages when display is smaller than 480px*/
+@media screen and (max-device-width: 30rem) {
+    /*makek the content to toke the whole available space with no gaps on the isfes*/
+    body {
+        margin: 0;
+        font-size: 0.8rem;
+    }
+
+    /*change the size of all menus and buttons*/
+    input, select, output, button {
+        font-size: 0.8rem;
+
+    }
+
+    /*change image position to top*/
+    header, image, nav {
+        grid-column: 1/-1;
+
+    }
+
+    /*remove the styling and decrease the gap between list components.
+    Reorder in horizontal position */
+    nav ul {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    /*change the size and gap between link components and put background color to distinguish them*/
+    nav a {
+        margin-right: 0rem;
+        margin-left: 0.5rem;
+        padding: 0rem;
+        background-color: #812814;
+        font-size: 0.8rem;
+        text-align: center;
+
+
+    }
+
+    /*reposition the conponents according to the new view*/
+    article {
+        grid-row: 4;
+        grid-column: 1/-1;
+        padding: 1rem;
+    }
+
+    .converter {
+        grid-row: 5;
+        grid-column: 1/-1;
+    }
+
+    .thGet {
+        grid-row: 6;
+        grid-column: 1/-1;
+    }
+
+    .keepConv {
+        grid-row: 7;
+        grid-column: 1/-1;
+    }
+
+    #displayConv {
+        grid-row: 7;
+        grid-column: 4/-1;
+    }
+
+
+    #profilePic, #infoPic, #distPic, img {
+        grid-column: 3/-1;
+    }
+
+    #distPic {
+        border-radius: 0;
+    }
+
+    footer {
+        grid-row: 9;
+    }
+}

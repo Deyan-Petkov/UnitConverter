@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="../static/js/main.js" th:src="@{/js/main.js}"></script>
+    <title>Weight</title>
+</head>
+<body>
+<main>
+
+    <img src="../static/images/scales.png" th:src="@{/images/scales.png}" alt="Scales"/>
+
+    <header>
+        <h1>Weight</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" th:href="@{/index}">Home</a></li>
+            <li><a href="distance.html" th:href="@{/distance}">Distance</a></li>
+            <li><a href="liquid.html" th:href="@{/liquid}">Liquid</a></li>
+            <li><a href="information.html" th:href="@{/information}">Information</a></li>
+            <li><a href="register.html" th:href="@{/register}">Register</a></li>
+            <li><a href="profile.html" th:href="@{/profile}">Profile</a></li>
+        </ul>
+    </nav>
+
+    <article>
+        <p>
+            The <a href="information.html#grainInf"> grain</a> was the earliest unit of mass and is the smallest unit in
+            <a
+                    href="information.html#troyInf"> troy</a> systems. The early unit was a <a
+                href="information.html#grainInf">
+            grain</a> of wheat or barleycorn used to weigh the precious metals silver and gold. Larger units preserved
+            in stone standards were developed that were used as both units of mass and of monetary currency. The <a
+                href="information.html#poundInf">pound</a> was derived from the <a
+                href="information.html#minaInf">mina</a> used by ancient civilizations. A smaller unit was the shekel,
+            and a larger unit was the talent. The magnitude of these units varied from place to place.
+        </p>
+        <p>
+            The Roman talent consisted of 100 libra (pound) which were smaller in magnitude than the <a
+                href="information.html#minaInf">mina</a>. The troy pound (~373.2 g) used in England and the United
+            States for monetary purposes, like the Roman pound, was divided into 12 ounces, but the Roman uncia (ounce)
+            was smaller. The carat is a unit for measuring gemstones that had its origin in the carob seed, which later
+            was standardized at 1/144 ounce and then 0.2 gram.
+        </p>
+        <p>
+            The stone, quarter, hundredweight, and ton were larger units of mass used in Britain. Today only the stone
+            continues in customary use for measuring personal body weight. The present stone is 14 pounds (~6.35 kg),
+            but an earlier unit appears to have been 16 pounds (~7.25 kg). The other units were multiples of 2, 8, and
+            160 times the stone, or 28, 112, and 2240 pounds (~12.7 kg, 50.8 kg, 1016 kg), respectively. The
+            hundredweight was approximately equal to two talents. The ton of 2240 pounds is called the "long ton". The
+            "short ton" is equal to 2000 pounds (~907 kg). A tonne (t) is equal to 1000 kg.
+        </p>
+    </article>
+
+    <div class="converter">
+
+        <p>
+            <input type="number" placeholder="Value" id="givenVolume" onkeyup="refreshGivenWeight();switchWeight()"/>
+            <select id="from" onchange="switchWeight()">
+                <option>From</option>
+                <option value="gr">Gram</option>
+                <option value="kg">Kilogram</option>
+                <option value="st">Stone</option>
+                <option value="lb">Pound</option>
+            </select>
+            <select id="to" onchange="switchWeight()">
+                <option>To</option>
+                <option value="gr">Gram</option>
+                <option value="kg">Kilogram</option>
+                <option value="st">Stone</option>
+                <option value="lb">Pound</option>
+            </select>
+            <output id="weightOutput">Result</output>
+        </p>
+    </div>
+
+
+
+    <button type="button" class="keepConv" onclick="keepConv()">Keep</button>
+        <output id="displayConv">Current saved calculations</output>
+
+
+    <form class="thGet" th:action="@{weight}" method="post" th:object="${savedConversions}">
+        <input title="First press 'Keep'" type="submit" value="Save" /> &nbsp;
+        <input type="text" id="saveDB" th:field="*{conversions}" />
+    </form>
+
+    <footer>
+        &copy; D.Petkov 2019
+    </footer>
+</main>
+</body>
+</html>

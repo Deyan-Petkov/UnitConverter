@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{../css/style.css}" href="../static/css/style.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <title>Register</title>
+</head>
+<body>
+<main>
+    <header>
+    </header>
+    <img src="../static/images/registration.png" th:src="@{/images/registration.png}"/>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" th:href="@{/index}">Home</a></li>
+            <li><a href="distance.html" th:href="@{/distance}">Distance</a></li>
+            <li><a href="liquid.html" th:href="@{/liquid}">Liquid</a></li>
+            <li><a href="weight.html" th:href="@{/weight}">Weight</a></li>
+            <li><a href="information.html" th:href="@{/information}">Information</a></li>
+            <li><a href="profile.html" th:href="@{/profile}">Profile</a></li>
+        </ul>
+    </nav>
+
+    <article id="register">
+        <form th:action="@{register}" method="post" th:object="${converterUser}">
+
+            <fieldset>
+                <legend>User Information</legend>
+                <table>
+                    <tr>
+                        <td><label for="title" >Title:</label></td>
+                        <td>
+                            <select id="title" th:field="*{title}">
+                                <option value="Mr">Mr</option>
+                                <option value="Mrs">Mrs</option>
+                                <option value="Miss">Miss</option>
+                                <option value="Ms">Ms</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="fname">First Name</label>
+                        <td><input type="text" id="fname" pattern="[A-Za-z]*"
+                                   title="Your name must contain only letters."
+                                   th:field="*{firstName}"/></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="lname">Last Name</label></td>
+                        <td><input type="text" id="lname" pattern="[A-Za-z]*"
+                                   title="Your name must contain only letters."
+                                   th:field="*{lastName}"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email</label></td>
+                        <td><input type="email" id="email"
+                                   th:field="*{email}"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="pword">Password</label></td>
+                        <td><input type="password" id="pword" minlength="6" th:field="*{password}"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button type="submit" >Register</button></td>
+                    </tr>
+
+
+                </table>
+            </fieldset>
+        </form>
+    </article>
+
+    <footer>
+        &copy; D.Petkov 2019
+    </footer>
+</main>
+</body>
+</html>

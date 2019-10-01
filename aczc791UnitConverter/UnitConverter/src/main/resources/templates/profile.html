@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <title>Profile</title>
+</head>
+<body>
+<main>
+    <header>
+        <h1>Profile</h1>
+    </header>
+    <img src="../static/images/profile.png"  id="profilePic" th:src="@{/images/profile.png}" />
+
+    <nav>
+        <ul>
+            <li><a href="index.html" th:href="@{/index}">Home</a></li>
+            <li><a href="distance.html" th:href="@{/distance}">Distance</a></li>
+            <li><a href="liquid.html" th:href="@{/liquid}">Liquid</a></li>
+            <li><a href="weight.html" th:href="@{/weight}">Weight</a></li>
+            <li><a href="information.html" th:href="@{/information}">Information</a></li>
+        </ul>
+    </nav>
+
+    <article>
+        <table>
+            <tr>
+                <td>First Name:</td>
+                <td th:text="${collatedUser.getConverterUser().firstName}">...</td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td th:text="${collatedUser.getConverterUser().lastName}">...</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td th:text="${collatedUser.getConverterUser().email}">...</td>
+            </tr>
+        </table>
+
+            <br />
+            <br />
+
+            <table>
+                <tr>
+                    <th>Savings</th>
+                </tr>
+                <tr th:each="saving : ${collatedUser.savedConversionsList}">
+                    <td th:text="${saving.conversions}" >Carmen</td>
+                </tr>
+            </table>
+
+        <br />
+        <br />
+
+        <table>
+            <tr>
+                <th>Login History</th>
+            </tr>
+            <tr th:each="login : ${collatedUser.logins}">
+                <td th:text="${login.time}">Empty</td>
+            </tr>
+        </table>
+
+
+
+    </article>
+
+    <footer>
+        &copy; D.Petkov 2019
+    </footer>
+</main>
+
+</body>
+</html>

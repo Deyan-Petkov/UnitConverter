@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="../static/js/main.js" th:src="@{/js/main.js}"></script>
+    <title>Liquid</title>
+</head>
+<body>
+<main>
+    <header><h1>Liquid</h1></header>
+
+    <img src="../static/images/liquid.png" th:src="@{/images/liquid.png}" alt="Water"/>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" th:href="@{/index}">Home</a></li>
+            <li><a href="distance.html" th:href="@{/distance}">Distance</a></li>
+            <li><a href="weight.html" th:href="@{/weight}">Weight</a></li>
+            <li><a href="information.html" th:href="@{/information}">Information</a></li>
+            <li><a href="register.html" th:href="@{/register}">Register</a></li>
+            <li><a href="profile.html" th:href="@{/profile}">Profile</a></li>
+        </ul>
+    </nav>
+
+    <article>
+        <p>
+            Goods of commerce were originally traded by number or volume. When weighing of goods began, units of mass
+            based on a volume of grain or water were developed. The diverse magnitudes of units having the same name,
+            which still appear today in our dry and liquid measures, could have arisen from the various commodities
+            traded. The larger avoirdupois pound for goods of commerce might have been based on volume of water which
+            has a higher bulk density than <a href="information.html#grainInf"> grain</a>.
+        </p>
+        <p>
+            Volume is the quantity of three-dimensional space enclosed by a closed surface, for example, the space that
+            a substance (solid, liquid, gas, or plasma) or shape occupies or contains. Volume is often quantified
+            numerically using the <a href="information.html#siInf">SI derived unit</a>, the cubic metre. The volume of a
+            container is generally understood to be the capacity of the container; i. e., the amount of fluid (gas or
+            liquid) that the container could hold, rather than the amount of space the container itself displaces.
+        </p>
+        <p>
+            Any <a href="distance.html">units of length</a> gives a corresponding unit of volume: the volume of a cube
+            whose sides have the given length. For example, a cubic centimetre (cm3) is the volume of a cube whose sides
+            are one centimetre (1 cm) in length.
+
+            In the International System of Units (<a href="information.html#siInf">SI</a>), the standard unit of volume
+            is the cubic metre (m3). The metric system also includes the litre (L) as a unit of volume, where one litre
+            is the volume of a 10-centimetre cube. Thus
+
+            1 litre = (10 cm)3 = 1000 cubic centimetres = 0.001 cubic metres,
+        </p>
+
+        <p>
+            Capacity is not identical in meaning to volume, though closely related; the capacity of a container is
+            always the volume in its interior. Units of capacity are the SI litre and its derived units, and Imperial
+            units such as <a href="information.html#gillInf">gill</a>, <a href="information.html#pintInf">pint</a>, <a
+                href="information.html#gallonInf">gallon,</a> and others. Units of volume are the cubes of <a
+                href="distance.html">units of length</a>.
+        </p>
+
+        <div id="converter">
+            <p>
+            <table>
+                <tr>
+                    <td>Litre</td>
+                    <td><input type="number" placeholder="Litre" id="litre" oninput="fromLitre()"/></td>
+                </tr>
+                <tr>
+                    <td>Millilitre</td>
+                    <td><input type="number" placeholder="Millilitre" id="millilitre" oninput="fromMillilitre()"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gallon</td>
+                    <td><input type="number" placeholder="Gallon" id="gallon" oninput="fromGallon()"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Pint</td>
+                    <td><input type="number" placeholder="Pint" id="pint" oninput="fromPint()"/>
+                    </td>
+                </tr>
+            </table>
+            </p>
+        </div>
+
+    </article>
+
+
+    <button type="button" class="keepConv" onclick="keepConv()">Keep</button>
+    <output id="displayConv">Current saved calculations</output>
+    <p>
+    <form class="thGet" th:action="@{liquid}" method="post" th:object="${savedConversions}">
+        <input type="submit" value="Save"/> &nbsp;
+        <input type="text" id="saveDB" th:field="*{conversions}">
+    </form>
+    </p>
+
+    <footer>
+        &copy; D.Petkov 2019
+    </footer>
+</main>
+</body>
+</html>
