@@ -37,3 +37,4 @@ security
 UnitConverter\src\main\java\uk\ac\city\aczc791\UnitConverter\config\SecurityConfig.java
 
 No password required for access to the database.
+Server is using address https://localhost:8443
